@@ -1,0 +1,7 @@
+import { Database, Settings2 } from 'lucide-react'
+import EmptySystemPanel from '../components/EmptySystemPanel'
+import SectionHeader from '../components/SectionHeader'
+
+export default function PlaceholderPage({ title, eyebrow, description, dataStore = false }: { title: string; eyebrow: string; description: string; dataStore?: boolean }) {
+  return <div className="page-stack"><SectionHeader eyebrow={eyebrow} title={title} description={description} action={<button className="ghost-button"><Settings2 size={15}/> Configure</button>} /><EmptySystemPanel title={dataStore ? 'PostgreSQL event store' : 'Configuration workspace'} copy={dataStore ? 'The UI is ready. We will connect the transaction, decision, and alert tables to the backend in the next implementation phase.' : 'The shell is ready for the production configuration controls we will add after the core inference pipeline is connected.'} connected={false}/>{dataStore && <section className="panel"><div className="panel-heading"><div><div className="eyebrow">SCHEMA</div><h2>Planned entities</h2></div></div><div className="entity-grid"><div><Database size={17}/><strong>transactions</strong><span>Raw event + prediction</span></div><div><Database size={17}/><strong>alerts</strong><span>Risk events + response</span></div><div><Database size={17}/><strong>model_runs</strong><span>Experiment metrics</span></div><div><Database size={17}/><strong>system_events</strong><span>Pipeline health</span></div></div></section>}</div>
+}
